@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <com.duongkk.ebook.view.customviews.CustomTextView
         android:id="@+id/textview_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

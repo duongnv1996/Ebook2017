@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/idlinearlayoutanh"
+            android:layout_width="240dp"
+            android:layout_height="200dp"
+            android:layout_alignParentEnd="true"
+            android:background="#fcf4ef"></ImageView>
+
+        <ImageView
+            android:id="@+id/imgsach"
+            android:layout_width="150dp"
+            android:layout_height="210dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="42dp"
+            android:scaleType="fitXY" />
+
+        <com.duongkk.ebook.view.customviews.CustomTextView
+            android:id="@+id/textviewtensach"
+            style="@style/style_text_title"
+            android:layout_alignTop="@+id/imgsach"
+            android:text="tên sách" />
+
+        <com.duongkk.ebook.view.customviews.CustomTextView
+            android:id="@+id/texttacgia"
+            style="@style/style_text_auth"
+            android:layout_below="@+id/textviewtensach"
+            android:text="tên tác giả" />
+
+        <Button
+            android:id="@+id/download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/texttacgia"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_button"
+            android:gravity="center"
+            android:text="Download"
+            android:textAllCaps="false"
+            android:textColor="#da390c"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/download"
+            android:layout_below="@+id/download"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_button"
+            android:text="Read online"
+            android:textAllCaps="false"
+            android:textColor="#da390c"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+
+    <com.duongkk.ebook.view.customviews.CustomTextView
+        style="@style/style_text_title"
+        android:layout_marginTop="16dp"
+        android:text="About the book"
+        android:textAllCaps="true" />
+    <com.duongkk.ebook.view.customviews.CustomTextView
+        style="@style/style_text_auth"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+        android:lines="60"
+ />
+</LinearLayout>

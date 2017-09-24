@@ -9,11 +9,38 @@ public class Book {
     String id;
     String urlImage;
     String title;
+    String auth;
     String urlDetail;
     String category;
+    String year;
+    String pages;
 
     public String getCategory() {
         return category;
+    }
+
+    public String getAuth() {
+        return auth;
+    }
+
+    public String getPages() {
+        return pages;
+    }
+
+    public void setPages(String pages) {
+        this.pages = pages;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public void setAuth(String auth) {
+        this.auth = auth;
     }
 
     public void setCategory(String category) {

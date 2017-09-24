@@ -1,12 +1,12 @@
 package com.duongkk.ebook.view.activities;
 
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
@@ -18,7 +18,6 @@ import com.duongkk.ebook.model.Book;
 import com.duongkk.ebook.model.Category;
 import com.duongkk.ebook.presenter.MainPresenter;
 import com.duongkk.ebook.utils.Constants;
-import com.duongkk.ebook.view.customviews.SpacesItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements IMainView, Adapte
     ProgressBar loading;
     @BindView(R.id.spinner)
     Spinner spinner;
-    @BindView(R.id.ll_toolbar)
-    LinearLayout llToolbar;
+
+    CollapsingToolbarLayout toolbarLayout;
     private MainPresenter mMainPresenter;
     private BookMainAdapter bookMainAdapter;
     private List<Book> listBooks;
@@ -48,30 +47,24 @@ public class MainActivity extends AppCompatActivity implements IMainView, Adapte
         ButterKnife.bind(this);
         init();
     }
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        //Here you can get the size!
 
-    }
+
+
     private void init() {
         mMainPresenter = new MainPresenter(this);
         listBooks = new ArrayList<>();
         bookMainAdapter = new BookMainAdapter(listBooks, this);
-        rcvBookMain.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        rcvBookMain.setHasFixedSize(true);
         rcvBookMain.setAdapter(bookMainAdapter);
-        SpacesItemDecoration decoration = new SpacesItemDecoration(32);
-        rcvBookMain.addItemDecoration(decoration);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        rcvBookMain.setLayoutManager(layoutManager);
+        rcvBookMain.setHasFixedSize(true);
+//        rcvBookMain.addItemDecoration(new SpacesItemDecoration(16));
         listCategories = new ArrayList<>();
         bookCategoryAdapter = new BookCategoryAdapter(this, R.layout.item_category, listCategories);
         bookCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(bookCategoryAdapter);
-
         //  mMainPresenter.loadListBook(Constants.URL_HOME);
         mMainPresenter.loadListCategoriesBook(Constants.URL_HOME);
-
-
     }
 
     @Override
@@ -81,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Adapte
             listBooks.addAll(bookList);
         }
         bookMainAdapter.notifyDataSetChanged();
+        rcvBookMain.scrollToPosition(0);
         showRecyclerview();
     }
 

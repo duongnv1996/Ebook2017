@@ -6,11 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.duongkk.ebook.R;
 import com.duongkk.ebook.model.Book;
+import com.duongkk.ebook.view.customviews.CustomTextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -41,6 +40,8 @@ public class BookMainAdapter extends RecyclerView.Adapter<BookMainAdapter.BookHo
         if (holder != null) {
             Book b = list.get(position);
             Picasso.with(context).load(b.getUrlImage()).into(holder.img);
+            holder.tvAuth.setText(b.getPages() + " pages");
+            holder.tvTitle.setText(CustomTextView.capitalize(b.getTitle().toLowerCase()));
         }
     }
 
@@ -53,8 +54,11 @@ public class BookMainAdapter extends RecyclerView.Adapter<BookMainAdapter.BookHo
     static class BookHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.img)
         ImageView img;
-        @BindView(R.id.card_root_item_book)
-        LinearLayout cardRootItemBook;
+        @BindView(R.id.tv_title)
+        CustomTextView tvTitle;
+
+        @BindView(R.id.tv_auth)
+        CustomTextView tvAuth;
 
         BookHolder(View view) {
             super(view);

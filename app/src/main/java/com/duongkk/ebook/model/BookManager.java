@@ -35,10 +35,12 @@ public class BookManager {
                     Elements BookLink = JsoupDoc.select(".news-header[href]");
                     for (int i = 0; i < BookTitle.size(); i++) {
                         Book book = new Book();
-                        book.setId(BookId.get(i).text());
+                        book.setId(BookId.get(i+1).text());
                         book.setUrlImage(BookUrlImg.get(i).attr("abs:src"));
                         book.setUrlDetail(BookLink.get(i).attr("abs:href"));
                         book.setTitle( BookTitle.get(i).text());
+                        book.setYear(BookYear.get(i).text().split(" ")[1]);
+                        book.setPages(BookYear.get(i).text().split(" ")[3]);
                         myList.add(book);
 //                        BookTitle.get(i).text());
 //                        BookUrlImgList.add();
