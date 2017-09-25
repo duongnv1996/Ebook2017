@@ -43,6 +43,8 @@ public class MainPresenter implements IBook,ICategory{
             iMainView.onLoadFail(e);
     }
 
+
+
     @Override
     public void loadDoneCategoriesBook(List<Category> listCategories) {
         iMainView.onLoadCategoryDone(listCategories);

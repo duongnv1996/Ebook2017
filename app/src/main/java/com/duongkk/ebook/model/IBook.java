@@ -9,4 +9,5 @@ import java.util.List;
 public interface IBook {
     void loadDoneListBook(List<Book> listBook);
     void loadFailListBook(Exception e);
+
 }

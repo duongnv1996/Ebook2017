@@ -15,7 +15,7 @@
             android:layout_width="240dp"
             android:layout_height="200dp"
             android:layout_alignParentEnd="true"
-            android:background="#fcf4ef"></ImageView>
+            android:background="#fcf4ef"/>
 
         <ImageView
             android:id="@+id/imgsach"
@@ -30,6 +30,7 @@
         <com.duongkk.ebook.view.customviews.CustomTextView
             android:id="@+id/textviewtensach"
             style="@style/style_text_title"
+            android:layout_width="180dp"
             android:layout_alignTop="@+id/imgsach"
             android:text="tên sách" />
 
@@ -54,6 +55,7 @@
             android:textSize="14sp" />
 
         <Button
+            android:id="@+id/btn_read"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/download"
@@ -73,9 +75,45 @@
         android:layout_marginTop="16dp"
         android:text="About the book"
         android:textAllCaps="true" />
-    <com.duongkk.ebook.view.customviews.CustomTextView
-        style="@style/style_text_auth"
-        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
-        android:lines="60"
- />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.duongkk.ebook.view.customviews.CustomTextView
+                style="@style/style_text_auth"
+                android:id="@+id/tv_publish"
+                android:text="Lorem Ipsues, esktop paker inclum"
+                />
+            <com.duongkk.ebook.view.customviews.CustomTextView
+                style="@style/style_text_auth"
+                android:id="@+id/tv_year"
+                android:text="Lorem Ipsues, esktop paker inclum"
+                />
+            <com.duongkk.ebook.view.customviews.CustomTextView
+                style="@style/style_text_auth"
+                android:id="@+id/tv_page"
+                android:text="Lorem Ipsues, esktop paker inclum"
+                />
+            <com.duongkk.ebook.view.customviews.CustomTextView
+                style="@style/style_text_auth"
+                android:id="@+id/tv_size"
+                android:text="Lorem Ipsues, esktop paker inclum"
+                />
+            <com.duongkk.ebook.view.customviews.CustomTextView
+                style="@style/style_text_auth"
+                android:id="@+id/tv_tag"
+                android:text="Lorem Ipsues, esktop paker inclum"
+                />
+            <com.duongkk.ebook.view.customviews.CustomTextView
+                style="@style/style_text_auth"
+                android:id="@+id/tv_shortContent"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                android:maxLines="60"
+                />
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

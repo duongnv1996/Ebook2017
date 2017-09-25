@@ -13,7 +13,6 @@
         android:layout_gravity="top"
         android:orientation="vertical"
         android:background="#fff"
-        android:padding="8dp"
         android:gravity="center|top">
 
         <ImageView
@@ -21,17 +20,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="200dp"
-            android:layout_marginTop="16dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop" />
         <com.duongkk.ebook.view.customviews.CustomTextView
             android:id="@+id/tv_title"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
             android:text="Android Book cooking dinner"
             style="@style/style_text_title"
          />
         <com.duongkk.ebook.view.customviews.CustomTextView
             android:id="@+id/tv_auth"
             android:text="Android Book cooking dinner"
-            style="@style/style_text_auth" />
+            style="@style/style_text_auth"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"/>
     </LinearLayout>
 </android.support.v7.widget.CardView>

@@ -1,5 +1,6 @@
 package com.duongkk.ebook.view.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.duongkk.ebook.R;
 import com.duongkk.ebook.adapters.BookCategoryAdapter;
 import com.duongkk.ebook.adapters.BookMainAdapter;
+import com.duongkk.ebook.interfaces.CallBack;
 import com.duongkk.ebook.model.Book;
 import com.duongkk.ebook.model.Category;
 import com.duongkk.ebook.presenter.MainPresenter;
@@ -25,7 +28,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements IMainView, AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements IMainView, AdapterView.OnItemSelectedListener,CallBack {
     @BindView(R.id.rcv_book_main)
     RecyclerView rcvBookMain;
     @BindView(R.id.loading)
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Adapte
     private void init() {
         mMainPresenter = new MainPresenter(this);
         listBooks = new ArrayList<>();
-        bookMainAdapter = new BookMainAdapter(listBooks, this);
+        bookMainAdapter = new BookMainAdapter(listBooks, this,this);
         rcvBookMain.setAdapter(bookMainAdapter);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         rcvBookMain.setLayoutManager(layoutManager);
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements IMainView, Adapte
 
     @Override
     public void onLoadFail(Exception e) {
-        showRecyclerview();
+//        showRecyclerview();
         LogUtils.e(e.getMessage());
     }
 
@@ -101,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements IMainView, Adapte
         LogUtils.e(e.getMessage());
     }
 
+
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         showLoading();
@@ -115,5 +120,14 @@ public class MainActivity extends AppCompatActivity implements IMainView, Adapte
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    @Override
+    public void onCallBack(int position) {
+        Intent i = new Intent(MainActivity.this,DetailBookActivity.class);
+        Bundle b = new Bundle();
+        b.putParcelable(Constants.MSG,listBooks.get(position));
+        i.putExtra(Constants.BUNDLE,b);
+        startActivity(i);
     }
 }

@@ -14,4 +14,5 @@ public interface IMainView {
     void onLoadFail(Exception e);
     void onLoadCategoryDone(List<Category> list);
     void onLoadCategoryFail(Exception e);
+
 }

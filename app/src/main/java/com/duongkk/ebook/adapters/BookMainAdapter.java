@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.duongkk.ebook.R;
+import com.duongkk.ebook.interfaces.CallBack;
 import com.duongkk.ebook.model.Book;
 import com.duongkk.ebook.view.customviews.CustomTextView;
 import com.squareup.picasso.Picasso;
@@ -24,9 +25,10 @@ import butterknife.ButterKnife;
 public class BookMainAdapter extends RecyclerView.Adapter<BookMainAdapter.BookHolder> {
     private List<Book> list;
     private Context context;
-
-    public BookMainAdapter(List<Book> list, Context context) {
+    private CallBack callBack;
+    public BookMainAdapter(List<Book> list, Context context,CallBack callBack) {
         this.list = list;
+        this.callBack = callBack;
         this.context = context;
     }
 
@@ -36,12 +38,18 @@ public class BookMainAdapter extends RecyclerView.Adapter<BookMainAdapter.BookHo
     }
 
     @Override
-    public void onBindViewHolder(BookHolder holder, int position) {
+    public void onBindViewHolder(BookHolder holder, final int position) {
         if (holder != null) {
             Book b = list.get(position);
             Picasso.with(context).load(b.getUrlImage()).into(holder.img);
             holder.tvAuth.setText(b.getPages() + " pages");
             holder.tvTitle.setText(CustomTextView.capitalize(b.getTitle().toLowerCase()));
+            holder.img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    callBack.onCallBack(position);
+                }
+            });
         }
     }
 
