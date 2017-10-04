@@ -96,22 +96,27 @@ public class BookManager {
                     Elements bookimg = JsoupDoc.select(".img-responsive[src]");
                     Elements bookid = JsoupDoc.select(".text-center strong");
                     Elements bookname = JsoupDoc.select(".col-md-8 h1");
-                    Elements bookinfo = JsoupDoc.select("tbody");
                     Elements bookdescription = JsoupDoc.select(".text-justify");
                     Elements booklinkdow = JsoupDoc.select(".btn-primary[href]");
                     Elements booklinkread = JsoupDoc.select(".btn-danger[href]");
                     Elements booktag = JsoupDoc.select("#book-tags");
+                    Elements bookPublisher = JsoupDoc.select("tbody tr:eq(0)");
+                    Elements bookYear = JsoupDoc.select("tbody tr:eq(1)");
+                    Elements bookAutor = JsoupDoc.select("tbody tr:eq(2)");
+                    Elements bookPages = JsoupDoc.select("tbody tr:eq(3)");
+                    Elements bookSize = JsoupDoc.select("tbody tr:eq(4)");
 
                     for (int i = 0; i < bookimg.size(); i++) {
                         String shortDesciption = bookdescription.get(i).text();
                         String linkDownload = booklinkdow.get(i).attr("abs:href");
                         String linkRead = booklinkread.get(i).attr("abs:href");
                         String tag = booktag.get(i).text();
-                        String publisher = bookinfo.get(i).text().split(" ")[1];
-                        String Year = bookinfo.get(i).text().split(" ")[2];
-                        String Autor = bookinfo.get(i).text().split(" ")[3];
-                        String Page = bookinfo.get(i).text().split(" ")[4];
-                        String Size = bookinfo.get(i).text().split(" ")[5];
+                        String publisher = bookPublisher.get(i).text();
+                        String Year = bookYear.get(i).text();
+                        String Autor = bookAutor.get(i).text();
+                        String Page = bookPages.get(i).text();
+                        String Size = bookSize.get(i).text();
+
 
                         book.setPages(Page);
                         book.setYear(Year);

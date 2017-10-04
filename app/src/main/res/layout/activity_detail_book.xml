@@ -10,12 +10,7 @@
         android:layout_height="wrap_content"
         >
 
-        <ImageView
-            android:id="@+id/idlinearlayoutanh"
-            android:layout_width="240dp"
-            android:layout_height="200dp"
-            android:layout_alignParentEnd="true"
-            android:background="#fcf4ef"/>
+
 
         <ImageView
             android:id="@+id/imgsach"
@@ -25,7 +20,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginRight="16dp"
             android:layout_marginTop="42dp"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:elevation="3dp"/>
 
         <com.duongkk.ebook.view.customviews.CustomTextView
             android:id="@+id/textviewtensach"
